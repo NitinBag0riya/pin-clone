@@ -1,25 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Button } from 'react-bootstrap';
+import { getPhotos, getPhotosUsingKeyword } from './apis/FetchFromUnsplash'
+import Header from './layout/Header';
+import { createBrowserHistory } from 'history';
+import { Router, Switch, Route } from 'react-router-dom';
+import { Home } from './components/Home/Home';
 
 function App() {
+
+  useEffect( () => {
+    
+    // getPhotos()
+    // .then(data => data.json())
+    // .then(photos => {
+    //   console.log('PHOTOS', photos)
+    // }).catch(err => {
+    //   console.log('Error', err)
+    // });
+
+
+    // getPhotosUsingKeyword('animal')
+    // .then(data => data.json())
+    // .then(photos => {
+    //   console.log('PHOTOS', photos)
+    // }).catch(err => {
+    //   console.log('Error', err)
+    // });
+
+
+
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={createBrowserHistory()}>
+      <Switch>
+        <Route path = {"/"} component = {Home} exact={true}/>
+        <Route path="*" exact={true} component={ () => "404 | You Lost ! "} />
+      </Switch>
+    </Router>
+
   );
 }
 
