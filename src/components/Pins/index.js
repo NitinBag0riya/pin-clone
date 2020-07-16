@@ -13,7 +13,7 @@ export function Posts(props){
 
     useEffect( () => {
         setImages(props.data)
-        console.log('data changed!', props.data)
+        // console.log('data changed!', props.data)
     }, [props])
 
 
@@ -26,6 +26,11 @@ export function Posts(props){
             setSelectedPin([])
         }
         
+    }
+
+    const hidePin = (id) => {
+        const filteredImages  = images.filter( image => image.id !== id)
+        setImages(filteredImages)
     }
 
     return(
@@ -45,9 +50,19 @@ export function Posts(props){
                         alt={image.alt_description} 
                         src={image?.urls?.small}
                     />
-                    <Button variant="primary" onClick={() => verifyPinData(true, image)}>
-                        Launch vertically centered modal
-                    </Button>
+
+                    {
+                        (props?.hideModalButton) 
+                        ? '' 
+                        : <Button variant="primary" onClick={() => verifyPinData(true, image)}>
+                            Save Pin
+                          </Button>
+                    }
+
+                        <Button variant="danger" onClick={() => hidePin(image.id)}>
+                            Hide Pin
+                          </Button>
+                    
                 </Col>
             )
          }

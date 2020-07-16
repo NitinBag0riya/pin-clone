@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav, NavDropdown, Form, Col } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
 function Header(){
     return(
@@ -11,6 +11,7 @@ function Header(){
                 <Nav className="mr-auto">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/about-us">Latest</Nav.Link>
+                <Nav.Link href="#">Saved Pins</Nav.Link>
                 {/* <Form inline>
                     <Form.Row>
                         <Col xs={7} md={12}>
