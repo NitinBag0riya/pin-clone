@@ -1,12 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { Modal, Button, Image, InputGroup, FormControl } from 'react-bootstrap';
+import React, { useEffect, useState, useRef } from 'react'
+import { Modal, Button, Image, InputGroup, FormControl, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { ADD_PIN } from '../State/types';
 
 export function SavePinModal(props) {
   const [ pin, setPin] = useState([])
+  let titleRef = useRef('')
+  const dispatch  = useDispatch()
+
     useEffect( () => {
         setPin(props.data)
-        console.log(props.data)
     }, [props.data])
+
+  const saveAndHideModel = () => {
+    dispatch({
+      type : ADD_PIN,
+      payload : {...pin, heading : titleRef.current.value}
+    })
+    props.onHide()
+  }
 
     return (
       <Modal
@@ -22,7 +34,7 @@ export function SavePinModal(props) {
             <InputGroup.Prepend>
               <InputGroup.Text>Pin Title</InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl />
+            <Form.Control type="text" placeholder=" Trending..." ref={titleRef} />
           </InputGroup>
 
           </Modal.Title>
@@ -32,7 +44,7 @@ export function SavePinModal(props) {
             <Image src={pin?.urls?.small} />
           </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Save Pin</Button>
+          <Button onClick={e => saveAndHideModel()}>Save Pin</Button>
         </Modal.Footer>
       </Modal>
     );
