@@ -9,34 +9,11 @@ import { store } from './store'
 import { SavedPins } from './screens/Saved/Saved';
 
 function App() {
-
-  useEffect( () => {
-    
-    // getPhotos()
-    // .then(data => data.json())
-    // .then(photos => {
-    //   console.log('PHOTOS', photos)
-    // }).catch(err => {
-    //   console.log('Error', err)
-    // });
-
-
-    // getPhotosUsingKeyword('animal')
-    // .then(data => data.json())
-    // .then(photos => {
-    //   console.log('PHOTOS', photos)
-    // }).catch(err => {
-    //   console.log('Error', err)
-    // });
-
-
-
-  }, [])
-
   return (
     <Provider store={store}>
       <Router history={createBrowserHistory()}>
         <Switch>
+          {/* routing with taking enabling 404 routes  */}
           <Route path = {"/"} component = {Home} exact={true}/>
           <Route path = {"/saved"} component = {SavedPins} exact={true}/>
           <Route path="*" exact={true} component={ () => "404 | You Lost ! "} />

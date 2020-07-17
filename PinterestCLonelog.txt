@@ -1,3 +1,27 @@
+commit 7ebbedc4d7b608a2bcd406584911f323dae3d6f0
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 10:18:25 2020 +0530
+
+    done some css styling with commeting
+
+commit 22267d4d0b940be8b3ecb1b9fca6394fa1aeb1d1
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 08:08:30 2020 +0530
+
+    added Photos reducers and state for fetching and showing data acc. to user query and bydefault
+
+commit f1ab3d21ddc7f644944619340383effcce089622
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 08:06:36 2020 +0530
+
+    added photos in store
+
+commit 1ab52478162b32314c666a61f951512ce4761c89
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 08:05:54 2020 +0530
+
+    Done Navbar with keyword search and deboucing
+
 commit 1cb3db2e238c7665848bbc24f9d21eff3136b9d1
 Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
 Date:   Fri Jul 17 05:08:12 2020 +0530
