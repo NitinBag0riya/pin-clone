@@ -5,3 +5,13 @@
 .small-font-size{
   font-size: 10px;
 }
+
+.sidebar-saved-pin {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 30vW;
+  background: #d6e4e4;
+  border-left: 0px solid grey;
+  padding: 5px 0px;
+}

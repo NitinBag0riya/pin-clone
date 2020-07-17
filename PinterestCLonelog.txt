@@ -1,0 +1,83 @@
+commit 1cb3db2e238c7665848bbc24f9d21eff3136b9d1
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 05:08:12 2020 +0530
+
+    pins add and hide functionality done
+
+commit 3dccd19f20fa0a8c4fad57d9436ce4d8268a11e2
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 04:32:00 2020 +0530
+
+    redux setup completed
+
+commit e96f2633c08a1ab5295d726862051269d460d43c
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 04:31:43 2020 +0530
+
+    saved data into redux state
+
+commit 8f0b408250b00d6ae0ecc8b2629d017e68cdc564
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 03:29:08 2020 +0530
+
+    Model receive image as props with  input title
+
+commit a34e4df2e7dda5f9a795a5c8ff65ae0cfe33e829
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 03:28:00 2020 +0530
+
+     setup modal for save Pin on selection
+
+commit d1ecbc068d6ac6ed12cf46f51279d1af670583f8
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 02:52:03 2020 +0530
+
+    addedLazyLoadingAPIfetchForMorePhotos
+
+commit 260ef2a971a88a69b06db65d0492f068fa041af5
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 01:59:15 2020 +0530
+
+    compoents created as per functionality
+
+commit a0161ee787bd8491281721a65ffe11b113f7d8f5
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 01:58:15 2020 +0530
+
+    Bootstrap css imported
+
+commit e4967b99a1ba8409773e0aaa3e26a342a3380fd9
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 01:57:23 2020 +0530
+
+    website title changed to Pinterest Clone
+
+commit 1b3ab649a9573c5117601e2bb40a02e552c85a6e
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 01:56:25 2020 +0530
+
+    declared routes
+
+commit c4c8bd6946b2799fc19e09572a0ce1addb87e4cb
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 01:55:18 2020 +0530
+
+    unsplash api with paignation and keyword methods
+
+commit 1db1d962ca0db95bc965cc9ad11b81953ff4b800
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 01:53:58 2020 +0530
+
+    Header file (Navabr without search field) init
+
+commit a8230ccd848230f716b7640bab022d83f4f0ea87
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Fri Jul 17 01:52:43 2020 +0530
+
+    environment variable setup for unsplash
+
+commit bd165baf2ef6f6e6184f89f4b1faec7b4efc3a5d
+Author: Nitin Bagoriya <nitin.bagoriya@hippocabs.com>
+Date:   Wed Jul 15 14:26:23 2020 +0530
+
+    Initialize project using Create React App

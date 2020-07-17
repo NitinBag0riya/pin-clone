@@ -1,4 +1,4 @@
-import { ADD_PIN, REMOVE_PIN } from "../types";
+import { ADD_PIN, REMOVE_PIN, USER_SELECTION_PHOTOS } from "../types";
 
 export function reducer(state, action){
     
@@ -15,6 +15,13 @@ export function reducer(state, action){
             return{
                 ...state,
                 pins : state.pins.filter( pin => pin.id !== action.payload.id)
+            }
+            break;
+
+        case USER_SELECTION_PHOTOS : 
+            return{
+                ...state,
+                photos : action.payload
             }
             break;
 

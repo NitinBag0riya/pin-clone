@@ -3,9 +3,12 @@ import Header from '../../layout/Header'
 import { Container } from 'react-bootstrap'
 import { Posts } from '../../components/Pins'
 import { getPhotos } from '../../apis/FetchFromUnsplash'
+import { SavedPins } from '../Saved/Saved'
 
 export function Home(){
     const [photos, setPhotos ] = useState([])  
+    const [ showSavedPins, setShowSavedPins] = useState(false)
+
     let pageCounter  = 1  
 
     useEffect( () => {
@@ -19,13 +22,28 @@ export function Home(){
             getPhotos(pageCounter).then(response => response.json()).then(images => setPhotos(photos.concat(images))).catch(e => console.log(e))
         }
     }
+
+    const toggleSavedPins = () => {
+        setShowSavedPins(!showSavedPins)
+    }
     
     return(
         <>
-        <Header />
+        <Header toggleSavedPins={toggleSavedPins} />
         <Container onScroll={e => loadMorePhotos(e)} style={{height:'100vH', backgroundColor:'coral',overflow : 'scroll'}}>
             <Posts data={photos} />
         </Container>
+
+        {
+            (showSavedPins)
+            ?   <div className="sidebar-saved-pin">
+                    Saved Pins
+                    <button>Close</button>
+                    <SavedPins />
+                </div>        
+        : ''
+        }
+        
         </>
     )
 }

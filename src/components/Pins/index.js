@@ -5,16 +5,22 @@ import { getPhotos } from '../../apis/FetchFromUnsplash'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { SavePinModal } from './SavePinModal';
+import { useSelector } from 'react-redux';
 
 export function Posts(props){    
     const [ images, setImages] = useState([])
     const [modalShow, setModalShow] = useState(false);
     const [selectedPin, setSelectedPin] = useState([])
+    const photos = useSelector(state => state.photos)
 
     useEffect( () => {
-        setImages(props.data)
+        if(photos.length){
+            setImages(photos)
+        }else{
+            setImages(props.data)
+        }        
         // console.log('data changed!', props.data)
-    }, [props])
+    }, [props,photos])
 
 
     const verifyPinData = (flag, data) => {
@@ -45,6 +51,9 @@ export function Posts(props){
          {
             images.map( image =>                 
                 <Col key={image.id} xs={12} md={8}>
+                    
+                    <h4>{image.heading || ''}</h4>
+
                     <LazyLoadImage
                         effect="blur"
                         alt={image.alt_description} 

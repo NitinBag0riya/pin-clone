@@ -9,6 +9,7 @@
     "bootstrap": "^4.5.0",
     "env-cmd": "^10.1.0",
     "history": "^5.0.0",
+    "nitin-js": "^1.0.10",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
