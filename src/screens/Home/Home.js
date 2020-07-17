@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../layout/Header'
-import { Container } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import { Posts } from '../../components/Pins'
 import { getPhotos } from '../../apis/FetchFromUnsplash'
 import { SavedPins } from '../Saved/Saved'
@@ -30,15 +30,16 @@ export function Home(){
     return(
         <>
         <Header toggleSavedPins={toggleSavedPins} />
-        <Container onScroll={e => loadMorePhotos(e)} style={{height:'100vH', backgroundColor:'coral',overflow : 'scroll'}}>
-            <Posts data={photos} />
+        <Container fluid onScroll={e => loadMorePhotos(e)} className="pins-container">
+            <Row>
+                <Posts data={photos} />
+            </Row>
         </Container>
 
         {
             (showSavedPins)
             ?   <div className="sidebar-saved-pin">
-                    Saved Pins
-                    <button>Close</button>
+                    <h4>  Saved Pins</h4>
                     <SavedPins />
                 </div>        
         : ''

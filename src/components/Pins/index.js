@@ -19,7 +19,6 @@ export function Posts(props){
         }else{
             setImages(props.data)
         }        
-        // console.log('data changed!', props.data)
     }, [props,photos])
 
 
@@ -50,27 +49,38 @@ export function Posts(props){
 
          {
             images.map( image =>                 
-                <Col key={image.id} xs={12} md={8}>
+                <Col key={image.id}  xs={ (props?.hideModalButton) ? 12 : 6 } md={ (props?.hideModalButton) ? 12: 3 } className="photo-container">
                     
-                    <h4>{image.heading || ''}</h4>
-
+                    <h6>{image.heading || ''}</h6>
+                    
+                    {/* for lazy loading images load effect */}
                     <LazyLoadImage
                         effect="blur"
                         alt={image.alt_description} 
                         src={image?.urls?.small}
+                        className="photo-grid"
                     />
+                    <div className="callToActionBtns">
+                        {/* condition checking making single componet works and act diff according to preview and display in grid pane */}
+                        {
+                            (props?.hideModalButton) 
+                            ? '' 
+                            : <Button variant="primary" onClick={() => verifyPinData(true, image)}>
+                                Save Pin
+                            </Button>
+                        }
 
-                    {
-                        (props?.hideModalButton) 
-                        ? '' 
-                        : <Button variant="primary" onClick={() => verifyPinData(true, image)}>
-                            Save Pin
-                          </Button>
-                    }
-
-                        <Button variant="danger" onClick={() => hidePin(image.id)}>
-                            Hide Pin
-                          </Button>
+                        {
+                            (props?.hideModalButton) 
+                            ? <Button variant="danger" onClick={() => hidePin(image.id)}>
+                                    Remove Pin
+                              </Button> 
+                            : <Button variant="danger" onClick={() => hidePin(image.id)}>
+                                Hide Pin
+                              </Button>
+                        }
+                            
+                    </div>
                     
                 </Col>
             )

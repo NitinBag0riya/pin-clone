@@ -16,6 +16,7 @@ function Header(props){
         }).catch(e => console.log(e))
     }
 
+    //search using search bar query string.
     const searchUsingQuery = (query) => {
         if(query.length > 3){
             getPhotosUsingKeyword(query).then(response => response.json()).then(images => {
@@ -28,11 +29,13 @@ function Header(props){
             alert('Please enter atleast 3 keyword')
         }
     }
+
+    //deboucing api for restsricted api calls.
     const debouceUserSearch = debounce(searchUsingQuery, 1000)
 
     return(
         <>
-        <Navbar bg="dark" className="navbar-sticky-" expand="lg" sticky="top">
+        <Navbar bg="light" className="navbar-sticky" expand="lg" sticky="top">
             <Navbar.Brand href="#home">PinterestClone</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -41,15 +44,11 @@ function Header(props){
                 <Nav.Link onClick={ () => fetchPhotos('latest') }>Latest</Nav.Link>
                 <Nav.Link onClick={ () => fetchPhotos('covid') }>Covid-19</Nav.Link>
                 <Nav.Link onClick={ () => props.toggleSavedPins()}>Saved Pins</Nav.Link>
-                <Form inline>
-                    <Form.Row>
-                        <Col xs={7} md={12}>
-                        <Form.Control onChange={e => debouceUserSearch(e.target.value)} placeholder="City, Animal etc" />
-                        </Col>
-                    </Form.Row>
-                </Form>
                 </Nav>                                    
             </Navbar.Collapse>
+            <Col md={5}>
+                <Form.Control onChange={e => debouceUserSearch(e.target.value)} placeholder="City, Animal etc" />
+            </Col>
         </Navbar>
         </>
     )

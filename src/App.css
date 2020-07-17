@@ -6,12 +6,45 @@
   font-size: 10px;
 }
 
+.navbar-sticky{
+  box-shadow: 0px 0px 0px 2px #fff;
+}
+
 .sidebar-saved-pin {
+  z-index: 1100;
   position: fixed;
+  height: 100vH;
   right: 0;
   top: 0;
   width: 30vW;
-  background: #d6e4e4;
+  background: #f1f1f1;
   border-left: 0px solid grey;
   padding: 5px 0px;
+  box-shadow: 2px 0px 5px #000;
+}
+
+.pins-container{
+  height: 100vH;
+  overflow-x: scroll;
+}
+
+.photo-container{
+  height: 320px;
+  overflow: hidden;
+  padding: 5px 10px;
+  position: relative;
+}
+
+img.photo-grid {
+  height: 320px;
+  width: 100%;
+}
+
+.callToActionBtns {
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
 }
