@@ -38,17 +38,28 @@ function Header(props){
         <Navbar bg="light" className="navbar-sticky" expand="lg" sticky="top">
             <Navbar.Brand href="#home">PinterestClone</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
+            {
+                (props.isOnSavedRoute) ? <>
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                        <Nav.Link href="/">Home</Nav.Link>
+                        </Nav>                                    
+                    </Navbar.Collapse>                    
+                </> : <>
+                <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link onClick={ () => fetchPhotos('latest') }>Latest</Nav.Link>
                 <Nav.Link onClick={ () => fetchPhotos('covid') }>Covid-19</Nav.Link>
-                <Nav.Link onClick={ () => props.toggleSavedPins()}>Saved Pins</Nav.Link>
+                <Nav.Link href='/saved'>Saved Pins</Nav.Link>
+                <Nav.Link onClick={ () => props.uploadPins()}>Upload Pin</Nav.Link>
                 </Nav>                                    
             </Navbar.Collapse>
             <Col md={5}>
                 <Form.Control onChange={e => debouceUserSearch(e.target.value)} placeholder="City, Animal etc" />
             </Col>
+            </>
+            }
         </Navbar>
         </>
     )
