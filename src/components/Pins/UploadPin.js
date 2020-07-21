@@ -25,7 +25,7 @@ export function UploadPin(props) {
             }
         }
         
-        alert('clicked')
+
         dispatch({
           type : USER_UPLOAD_PIN,
           payload : formattedPinObject

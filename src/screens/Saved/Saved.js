@@ -36,6 +36,7 @@ export function SavedPins(){
         <Header isOnSavedRoute={true} />
 
         <Container>
+            <h4 style={{ marginTop: 15}}>Saved Posts</h4>
             <Row>
             {
             localSavedPins.map( image =>                 
