@@ -4,46 +4,61 @@ import { Container, Row } from 'react-bootstrap'
 import { Posts } from '../../components/Pins'
 import { getPhotos } from '../../apis/FetchFromUnsplash'
 import { SavedPins } from '../Saved/Saved'
+import { UploadPin } from '../../components/Pins/UploadPin'
+import { useDispatch, useSelector } from 'react-redux'
+import { ADD_PIN } from '../../components/State/types'
 
 export function Home(){
-    const [photos, setPhotos ] = useState([])  
-    const [ showSavedPins, setShowSavedPins] = useState(false)
+    // const [photos, setPhotos ] = useState([])  
+    const photos = useSelector(state => state.pins)
+    const [ uploadPinModal, setUploadPinModal] = useState(false)
+
+    const dispatch = useDispatch()
 
     let pageCounter  = 1  
 
     useEffect( () => {
-        getPhotos().then(response => response.json()).then(images => setPhotos(images)).catch(e => console.log(e))
+        getPhotos().then(response => response.json()).then(images => {
+            dispatch({
+                type : ADD_PIN,
+                payload : images
+              })
+        }).catch(e => console.log(e))
     }, [])
 
     const loadMorePhotos = (e) => {
         const element = e.target;
         ++pageCounter;
         if( element.scrollHeight - element.scrollTop === element.clientHeight){
-            getPhotos(pageCounter).then(response => response.json()).then(images => setPhotos(photos.concat(images))).catch(e => console.log(e))
+            getPhotos(pageCounter).then(response => response.json()).then(images => {
+                dispatch({
+                    type : ADD_PIN,
+                    payload : images
+                  })
+            }).catch(e => console.log(e))
         }
     }
 
-    const toggleSavedPins = () => {
-        setShowSavedPins(!showSavedPins)
+
+    const toggleUploadPinModal = () => {
+        setUploadPinModal(!uploadPinModal)
     }
     
     return(
         <>
-        <Header toggleSavedPins={toggleSavedPins} />
+        <Header uploadPins={toggleUploadPinModal} />
         <Container fluid onScroll={e => loadMorePhotos(e)} className="pins-container">
             <Row>
                 <Posts data={photos} />
             </Row>
         </Container>
+        
 
-        {
-            (showSavedPins)
-            ?   <div className="sidebar-saved-pin">
-                    <h4>  Saved Pins</h4>
-                    <SavedPins />
-                </div>        
-        : ''
-        }
+        {/* upload user pins with image url  */}
+        <UploadPin
+            show={uploadPinModal}
+            onHide={() => toggleUploadPinModal()}
+        />
         
         </>
     )
