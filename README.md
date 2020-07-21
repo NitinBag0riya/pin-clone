@@ -23,6 +23,8 @@ to handle these action created redux action and dispatch them on need.
 
 ### for handling unnecessarily api calls implement debouncing from my own npm-package.
 
+## Used LocalStorage for savePins at localState with prepopulated data within to begin with. ##
+
 
 
 
