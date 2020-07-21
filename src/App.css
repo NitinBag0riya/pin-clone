@@ -41,10 +41,15 @@ img.photo-grid {
 }
 
 .callToActionBtns {
-  display: flex;
+  display: none;
   justify-content: space-around;
   height: 50px;
   width: 100%;
   position: absolute;
   bottom: 10px;
+}
+
+/* display calltoAction on grids hover */
+.photo-container.col-md-3.col-6:hover > .callToActionBtns {
+  display: flex;
 }

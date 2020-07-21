@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Modal, Button, Image, InputGroup, FormControl, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { ADD_PIN } from '../State/types';
+import { ADD_PIN, USER_SELECTION_PHOTOS } from '../State/types';
 
 export function SavePinModal(props) {
   const [ pin, setPin] = useState([])
@@ -14,7 +14,7 @@ export function SavePinModal(props) {
 
   const saveAndHideModel = () => {
     dispatch({
-      type : ADD_PIN,
+      type : USER_SELECTION_PHOTOS,
       payload : {...pin, heading : titleRef.current.value}
     })
     props.onHide()

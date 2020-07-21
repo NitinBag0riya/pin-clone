@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import { Col, Button } from 'react-bootstrap'
+import { Col, Button, Container, Row } from 'react-bootstrap'
 import { REMOVE_USER_SELECTION_PHOTOS } from '../../components/State/types'
 import Header from '../../layout/Header'
+import { PrePopulatedData } from '../../components/State/PrePopulatedData'
 
 export function SavedPins(){
     const dispatch = useDispatch()
@@ -25,7 +26,7 @@ export function SavedPins(){
     }
 
     useEffect( () => {
-        const fetchPins = JSON.parse(window.localStorage.getItem('savedPins')) || []
+        const fetchPins = JSON.parse(window.localStorage.getItem('savedPins')) || PrePopulatedData
         setLocalSavedPins(fetchPins)
     },[])
 
@@ -34,7 +35,9 @@ export function SavedPins(){
         <>
         <Header isOnSavedRoute={true} />
 
-        {
+        <Container>
+            <Row>
+            {
             localSavedPins.map( image =>                 
                 <Col key={image.id}  xs={6} md={3} className="photo-container">
                     
@@ -56,8 +59,10 @@ export function SavedPins(){
                     </div>
                     
                 </Col>
-            )
-        }
+                )
+            }
+            </Row>
+        </Container>
         </>
     )    
 }

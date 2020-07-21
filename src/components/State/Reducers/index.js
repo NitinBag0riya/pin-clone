@@ -1,4 +1,5 @@
 import { ADD_PIN, REMOVE_SAVED_PIN, USER_SELECTION_PHOTOS, USER_UPLOAD_PIN, REMOVE_USER_SELECTION_PHOTOS } from "../types";
+import { PrePopulatedData } from "../PrePopulatedData";
 
 const savedPinKey = 'savedPins';
 
@@ -14,8 +15,6 @@ export function reducer(state, action){
             break;
         
         case REMOVE_SAVED_PIN : 
-        alert('im here')
-        console.log(state.pins.filter( pin => pin.id !== action.payload))
             return{
                 ...state,
                 pins : state.pins.filter( pin => pin.id !== action.payload)
@@ -33,7 +32,7 @@ export function reducer(state, action){
 
         case USER_SELECTION_PHOTOS :
             //getUpdatedLocalState savedPins 
-            const fetchUpdatedSavedPinsFromLocalStorage = JSON.parse(window.localStorage.getItem(savedPinKey)) || [] 
+            const fetchUpdatedSavedPinsFromLocalStorage = JSON.parse(window.localStorage.getItem(savedPinKey)) || PrePopulatedData 
             window.localStorage.setItem(savedPinKey, JSON.stringify([...fetchUpdatedSavedPinsFromLocalStorage, action.payload]))
             console.log([...fetchUpdatedSavedPinsFromLocalStorage, action.payload])
             return{

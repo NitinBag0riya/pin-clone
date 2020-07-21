@@ -5,21 +5,19 @@ import { getPhotos } from '../../apis/FetchFromUnsplash'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { SavePinModal } from './SavePinModal';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { REMOVE_SAVED_PIN } from '../State/types';
 
 export function Posts(props){    
     const [ images, setImages] = useState([])
+    // const images = useSelector(state => state.pins)
     const [modalShow, setModalShow] = useState(false);
     const [selectedPin, setSelectedPin] = useState([])
-    const photos = useSelector(state => state.photos)
+    const dispatch = useDispatch()
 
     useEffect( () => {
-        if(photos.length){
-            setImages(photos)
-        }else{
-            setImages(props.data)
-        }        
-    }, [props,photos])
+        setImages(props.data)
+    }, [props]) 
 
 
     const verifyPinData = (flag, data) => {
@@ -34,8 +32,10 @@ export function Posts(props){
     }
 
     const hidePin = (id) => {
-        const filteredImages  = images.filter( image => image.id !== id)
-        setImages(filteredImages)
+        dispatch({
+            type : REMOVE_SAVED_PIN,
+            payload : id
+        })
     }
 
     return(
