@@ -1,4 +1,6 @@
-import { ADD_PIN, REMOVE_PIN, USER_SELECTION_PHOTOS } from "../types";
+import { ADD_PIN, REMOVE_SAVED_PIN, USER_SELECTION_PHOTOS, USER_UPLOAD_PIN, REMOVE_USER_SELECTION_PHOTOS } from "../types";
+
+const savedPinKey = 'savedPins';
 
 export function reducer(state, action){
     
@@ -7,23 +9,44 @@ export function reducer(state, action){
         case ADD_PIN : 
             return{
                 ...state,
-                pins : [...state.pins, action.payload]
+                pins : [...state.pins, ...action.payload]
             }
             break;
         
-        case REMOVE_PIN : 
+        case REMOVE_SAVED_PIN : 
+        alert('im here')
+        console.log(state.pins.filter( pin => pin.id !== action.payload))
             return{
                 ...state,
-                pins : state.pins.filter( pin => pin.id !== action.payload.id)
+                pins : state.pins.filter( pin => pin.id !== action.payload)
             }
             break;
 
-        case USER_SELECTION_PHOTOS : 
+        case REMOVE_USER_SELECTION_PHOTOS : 
+        //update localstorage as well on change
+            window.localStorage.setItem( savedPinKey, JSON.stringify(action.payload))
             return{
                 ...state,
-                photos : action.payload
+                savedPins : action.payload
             }
             break;
+
+        case USER_SELECTION_PHOTOS :
+            //getUpdatedLocalState savedPins 
+            const fetchUpdatedSavedPinsFromLocalStorage = JSON.parse(window.localStorage.getItem(savedPinKey)) || [] 
+            window.localStorage.setItem(savedPinKey, JSON.stringify([...fetchUpdatedSavedPinsFromLocalStorage, action.payload]))
+            console.log([...fetchUpdatedSavedPinsFromLocalStorage, action.payload])
+            return{
+                ...state,
+                savedPins : [...fetchUpdatedSavedPinsFromLocalStorage, action.payload]
+            }
+            break;
+        
+        case USER_UPLOAD_PIN : 
+            return{
+                ...state,
+                pin : state.pins.unshift(action.payload)
+            }
 
         default : return state;
     }
